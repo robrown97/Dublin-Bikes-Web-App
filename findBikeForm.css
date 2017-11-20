@@ -1,0 +1,92 @@
+#body{
+
+    padding:5px 5px 5px 5px;
+    font-family: sans-serif;
+}
+
+#googleMap{
+	max-width: 310px;
+    margin:auto;
+	margin-top: 40px;
+}#map{
+    border:solid;
+    border-color:#000000;
+    border-radius:10px 10px;
+}
+
+#nameHere{
+	position: relative;
+    width:250px;
+    left:0;
+}#availBikesHere{
+	position: relative;
+    width:200px;
+    left:200px;
+}
+button{position: relative;
+	background: #0F90A1;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 2em;
+    line-height: 1.6em;
+    margin: auto;
+    outline: none;
+    padding: 0em 1em;
+    text-shadow: 1px 1px #2C676E;
+}button:hover{
+	opacity:.7;
+}
+#body{
+    background: #f2f2f2;
+    padding: 1em 1em 1em 1em;
+    max-width: 300px;
+    margin: 10px auto 0;
+    box-shadow: 0 0 1em #222;
+    border-radius: 8px;
+}h4{
+    margin: 0 0 50px 0;
+    padding:0px;
+    text-align: center; 
+    font-size: 30px;
+    color: #4096A1;
+    border-bottom: solid 1px #fff;
+}form p{
+    margin-top:1em;
+    position: relative;
+}select{
+	padding:1em;
+    display: block;
+    box-sizing: border-box;
+    width: 90%;
+    outline: none;
+    margin: auto;
+    background:#cecece;
+    font-size: 1.6em;
+    padding: .8em .5em;
+    border-radius: 2px;
+    color: #6a6a6a;
+	border: solid 1px black;
+}select:hover{
+	opacity:.7;
+	cursor:pointer;	
+}#submit{
+    background: #00ccff;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 2em;
+    line-height: 1.6em;
+    margin: auto;
+    outline: none;
+    padding: 0em 1em;
+    text-shadow: 1px 1px #2C676E;
+}#submit:hover {
+    background: #00ccff;
+	opacity:.8;
+}
+option{
+
+}

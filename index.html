@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<script src="stations.js"></script> 
+        <link rel="stylesheet" href="findBikeForm.css">
+        <title>Find Station</title>
+    </head>
+    
+    <body onload="addressList()">
+    <div id="body">
+    	<div id="googleMap"><img id="map" src="https://maps.googleapis.com/maps/api/staticmap?center=Dublin%20&zoom=13&size=300x200&maptype=roadmap&key=%20AIzaSyDFYsfHIt5LS7BP94P_zABHNMls0dm6ObY"></div>
+        
+        <div id="addressDropdown">
+        	<form id="mainForm" name="location">
+        		<h2>Stations:</h2><p>
+	        	<select id="mySelect" onchange="userInput()" >
+	        		<option id="addressList" value="select station" selected="selected" name="selectStation">Select Station..</option>
+	        	</select><br>
+	        	<button id="submit" >Get info.</button></p>
+        	</form>	
+        </div>
+        
+        <div id="bikeInfo">
+			<h3>Station:</h3>
+			<p id="station"></p>
+            <p class="attribute">Available Bikes:</p>  
+			    <p class="value" id="availBikes"></p>
+            <p class="attribute">Stands Available:</p>  
+			    <p class="value" id="availStands"></p>
+            <p class="attribute">Payment Machine:</p>   
+			    <p class="value" id="banking"></p>
+            <p class="attribute">Station Status:</p>    
+			    <p class="value" id="status"></p>
+        </div>
+	</div>
+	
+	<button onclick="map()">ConcatURL()</button>
+	<button href="selectedStation.html">Next Page</button>
+    
+    </body>
+    
+    <script src="concatURL.js"></script>
+    
+</html>
+
