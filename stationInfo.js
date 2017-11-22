@@ -1,3 +1,8 @@
+
+
+
+
+/*
 //GETTING USER STATION INPUT ie. STATION NAME
 	function userInput(){
         var userInput = document.getElementById("mainForm").elements[0].value;
@@ -79,4 +84,5 @@ function status(){
 	    	}
 		}
 		xhr.send();
-}
+
+*/
