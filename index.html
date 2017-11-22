@@ -10,7 +10,7 @@
     <div id="body">
         
         <div id="addressDropdown">
-        	<form id="mainForm" name="location">
+        	<form id="mainForm" name="location" onchange="stationInfo()">
         		<h2>Stations:</h2><p>
 	        	<select id="mySelect">
 	        		<option id="addressList" value="select station" selected="selected" name="selectStation">Select Station..</option>
@@ -55,50 +55,62 @@
 	<button onclick="map()">View Location</button>
 	
 	<button href="selectedStation.html">Next Page</button>
-    
-    <script>
-    var stationName;
-    function stationInfo(){
-    stationName = document.getElementById("mainForm").elements[0].value;
-    //document.getElementById("stationName").innerHTML = stationName;
+	
+	<script>
+	
+var stationName;
+var lat;
+var lng;
+	
+function stationInfo(){
+	stationName = document.getElementById("mainForm").elements[0].value;
+	document.getElementById("stationName").innerHTML = stationName;
 	console.log(stationName);
-	//request	
-		var xhr = new XMLHttpRequest(); 		
-		xhr.open('GET', 'https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=fc485179156e7d3c19085b499c05dd7bf9191cb4');
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-	    		var items = JSON.parse(xhr.responseText);
-			//getting info based on that station  		
-	    		for (var i in items){
-					if(stationName == items[i].address){
-						var bikes = items[i].available_bikes;
-						var stands = items[i].available_bike_stands;
-						var bank = items[i].banking;
-							if(bank=="true"){
-								bank = "Payments Available"
+//request	
+	var xhr = new XMLHttpRequest(); 	
+	xhr.open('GET', 'https://api.jcdecaux.com/vls/v1/stations?contract=Dublin&apiKey=fc485179156e7d3c19085b499c05dd7bf9191cb4');
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+    		var items = JSON.parse(xhr.responseText);
+		//getting info based on that station  		
+    		for (var i in items){
+				if(items[i].address == stationName){
+					var bikes = items[i].available_bikes;
+					var stands = items[i].available_bike_stands;
+					var bank = items[i].banking;
+						if(bank=="true"){
+							bank = "Payments Available"
+						}else{
+							bank = "Payments Unavailable"
+						}
+					var stat = items[i].status;
+						if(status=="OPEN"){
+								stat = "Open"
 							}else{
-								bank = "Payments Unavailable"
+								stat = "Closed"
 							}
-						var stat = items[i].stat;
-					//lng and lat for CONCAT function
-						var lng = items[i].position.lng;
-						var lat = items[i].position.lat;
+				//lng and lat for CONCAT function
+					lng = items[i].position.lng;
+					lat = items[i].position.lat;
 
-					//console.log(bikes+stands+bank+stat);
+				//console.log(bikes+stands+bank+stat);
+			
+				document.getElementById("availBikes").innerHTML = bikes;
+				document.getElementById("availStands").innerHTML = stands;
+				document.getElementById("banking").innerHTML = bank;
+				document.getElementById("status").innerHTML = stat;
+				}//if loop
 				
-					document.getElementById("availBikes").innerHTML = bikes;
-					document.getElementById("availStands").innerHTML = stands;
-					document.getElementById("banking").innerHTML = bank;
-					document.getElementById("status").innerHTML = stat;
-					}//if loop
-					else{
-						alert("Opps, Looks like something went wrong!"+"\n"+"Please try again.");
-					}
-	    		}
-	    	}
-		}
+    		}
+    	}
 	}
-    </script>
+	xhr.send();
+}
+function map(){
+	document.getElementById("map").src="https://maps.googleapis.com/maps/api/staticmap?center="+ lat +",%20"+ lng +"&zoom=15&size=450x300&y=roadmap&markers=color:red%7Clabel:%7C%20"+ lat +",%20"+ lng +"&key=%20AIzaSyDFYsfHIt5LS7BP94P_zABHNMls0dm6ObY";
+}
+	</script>
+
     </body>
 </html>
 
